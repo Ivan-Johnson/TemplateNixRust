@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+#set -x # verbose debug
+
+###################
+# PARSE ARGUMENTS #
+###################
+
+if [ "$#" -ne 0 ]; then
+	echo "Expected zero args"
+	echo
+	"$0" --help
+	exit 1
+fi
+
+#########
+# SETUP #
+#########
+cd "$(dirname "$0")/.."
+
+##############
+# MAIN LOGIC #
+##############
+
+nix flake update .
+cargo update
